@@ -1,0 +1,64 @@
+{
+    "$id": "file://localhost/schemas/updateAutomationRequest.json",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Update Automation Request",
+    "description": "A setting for an automation",
+    "examples": [
+        {
+            "feed_limit": 100,
+            "feed_rate": 10,
+            "time_limit": 60,
+            "plc_readings": [{
+                "panel": "mccp",
+                "property": "userChargingBattery",
+                "value": 1
+            }]
+        }
+    ],
+    "required": [
+        "feed_limit",
+        "feed_rate",
+        "time_limit",
+        "plc_readings"
+    ],
+    "type": "object",
+    "properties": {
+        "feed_limit": {
+            "$id": "#/properties/feed_limit",
+            "type": "integer",
+            "title": "The feed_limit schema",
+            "description": "The feed_limit that occured",
+            "examples": [
+                100
+            ]
+        },
+        "feed_rate": {
+            "$id": "#/properties/feed_rate",
+            "type": "integer",
+            "title": "The feed_rate schema",
+            "description": "The feed_rate that occured",
+            "examples": [
+                10
+            ]
+        },
+        "time_limit": {
+            "$id": "#/properties/time_limit",
+            "type": "integer",
+            "title": "The time_limit schema",
+            "description": "The time_limit that occured",
+            "examples": [
+                60
+            ]
+        },
+        "plc_readings": {
+            "$id": "#/properties/settings",
+            "type": "array",
+            "title": "The settings schema",
+            "description": "The settings to apply",
+            "items": {
+                "$ref": "automationSetting.json"
+            }
+        }
+    },
+    "additionalProperties": false
+}

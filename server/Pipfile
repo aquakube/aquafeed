@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+Flask = "2.2.2"
+Werkzeug = "2.2.2"
+Flask-Cors = "3.0.10"
+kafka-python = "2.0.2"
+jsonschema = "4.17.3"
+requests = "2.24.0"
+opentelemetry-api = "1.15.0"
+opentelemetry-sdk = "1.15.0"
+opentelemetry-exporter-otlp = "1.15.0"
+PyYaml = "6.0"
+pyOpenSSL = "23.1.1"
+
+[requires]
+python_version = "3.11"

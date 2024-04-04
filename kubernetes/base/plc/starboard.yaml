@@ -1,0 +1,361 @@
+apiVersion: foreveroceans.io/v1
+kind: PLC
+metadata:
+  name: starboard-feed-string
+  labels:
+    plc.foreveroceans.io/brand: automation-direct
+    plc.foreveroceans.io/productID: C2-03CPU
+spec:
+  title: STARBOARD FEED STRING PLC
+  version: latest
+  plc_timeout: 0.5
+  base: modbus+tcp://10.0.9.70:502/1/
+  properties:
+  #RUN PUMPS
+    userrunsupplypump:
+      title: Supply Pump On/Off
+      type: boolean
+      readOnly: false
+      forms:
+      - href: '16489'
+        op:
+        - readproperty
+        - writeproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+    userrundeliverypump:
+      title: Delivery Pump On/Off
+      type: boolean
+      readOnly: false
+      forms:
+      - href: '16490'
+        op:
+        - readproperty
+        - writeproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+    userrunaugermotor:
+      title: Auger Motor On/Off
+      type: boolean
+      readOnly: false
+      forms:
+      - href: '16491'
+        op:
+        - readproperty
+        - writeproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+  # RUN AUGER MOTOR USING HZ OR KG/M
+  # FALSE = auger speed set by feed rate input
+  # TRUE = auger speed set by hz input
+    augermotorfeedrateorhz:
+      title: Auger Motor Feed Rate / Hz
+      type: boolean
+      readOnly: false
+      forms:
+      - href: '16499'
+        op:
+        - readproperty
+        - writeproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+  # PUMP/MOTOR SPEED DEMANDS
+    usersupplypumpspeeddemand:
+      title: Supply Pump Speed Demand
+      type: number
+      unit: percent
+      minimum: 0
+      maximum: 100
+      readOnly: false
+      forms:
+      - href: '400009'
+        op:
+        - readproperty
+        - writeproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    userdeliverypumpspeeddemand:
+      title: Delivery Pump Speed Demand
+      type: number
+      unit: percent
+      minimum: 0
+      maximum: 100
+      readOnly: false
+      forms:
+      - href: '400010'
+        op:
+        - readproperty
+        - writeproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    useraugermotorspeeddemand:
+      title: Auger Motor Speed Demand
+      type: number
+      unit: percent
+      minimum: 0
+      maximum: 100
+      readOnly: false
+      forms:
+      - href: '400115'
+        op:
+        - readproperty
+        - writeproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+  #PUMPS/MOTORS SPEED FEEDBACK
+    supplypumpspeedfeedback:
+      title: Supply Pump Speed Feedback
+      type: number
+      unit: percent
+      readOnly: true
+      forms:
+      - href: '400011'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    deliverypumpspeedfeedback:
+      title: Delivery Pump Speed Feedback
+      type: number
+      unit: percent
+      readOnly: true
+      forms:
+      - href: '400012'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    augermotorspeedfeedback:
+      title: Auger Motor Speed Feedback
+      type: number
+      unit: percent
+      readOnly: true
+      forms:
+      - href: '400013'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+  #SENSOR READOUTS
+    mixbwllevellow:
+      title: Mixing Bowl Level Low
+      type: boolean
+      readOnly: true
+      forms:
+      - href: '16386'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+    mixbwllevelhigh:
+      title: Mixing Bowl Level High
+      type: boolean
+      readOnly: true
+      forms:
+      - href: '16387'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+    overflowhighon:
+      title: Mixing Bowl Overflow High On
+      type: boolean
+      readOnly: true
+      forms:
+      - href: '16388'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+    overflowhighhighon:
+      title: Mixing Bowl Overflow High High On
+      type: boolean
+      readOnly: true
+      forms:
+      - href: '16389'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+    feedcapacitiveon:
+      title: Feed Detected
+      type: boolean
+      readOnly: true
+      forms:
+      - href: '16390'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+    mixbwllevel:
+      title: Mixing Bowl Level
+      type: number
+      unit: in.w.c.
+      minimum: 0
+      maximum: 18
+      readOnly: true
+      forms:
+      - href: '400005'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    supplypumpvacuumsensor:
+      title: Supply Pump Vacuum Sensor
+      type: number
+      unit: psi
+      readOnly: true
+      forms:
+      - href: '400014'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    deliverypumpoutletpressure:
+      title: Delivery Pump Outlet Pressure
+      type: number
+      unit: psi
+      readOnly: true
+      forms:
+      - href: '400017'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+  #FEED PARAMETERS (WRITE)
+    userfeedreset:
+      title: Reset Feed
+      type: boolean
+      readOnly: false
+      forms:
+      - href: '16488'
+        op:
+        - readproperty
+        - writeproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+    userfeedquantityrequested:
+      title: Feed Quantity Requested
+      type: number
+      unit: kg
+      minimum: 0
+      maximum: 3000 # TBD
+      readOnly: false
+      forms:
+      - href: '400023'
+        op:
+        - readproperty
+        - writeproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    userfeedraterequested:
+      title: Feed Rate Requested
+      type: number
+      unit: kg/m
+      minimum: 5 # TBD
+      maximum: 50 # TBD
+      readOnly: false
+      forms:
+      - href: '400024'
+        op:
+        - readproperty
+        - writeproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    userfeedconstantrequested:
+      title: Feed Constant Requested
+      type: number
+      readOnly: false
+      forms:
+      - href: '400025'
+        op:
+        - readproperty
+        - writeproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+  #FEED PARAMETERS (READ)
+    #COILS
+    requestedfeedquantitymet:
+      title: Requested Feed Quantity Met
+      type: boolean
+      readOnly: false
+      forms:
+      - href: '16394'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+  #HOLDING REGISTERS
+    feedtimeestimate:
+      title: Estimated Feed Time
+      type: number
+      unit: mins
+      readOnly: true
+      forms:
+      - href: '401025'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    feedquanititydelivered:
+      title: Feed Quanitity Delivered
+      type: number
+      unit: kg
+      readOnly: true
+      forms:
+      - href: '400002'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    feedrateactual:
+      title: Feed Rate
+      type: number
+      unit: kg/m
+      readOnly: true
+      forms:
+      - href: '400004'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    augerticks:
+      title: Total Auger Ticks
+      type: number
+      unit: ticks
+      minimum: 0
+      maximum: 10000000
+      readOnly: true
+      forms:
+      - href: '416385'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5

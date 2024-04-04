@@ -1,0 +1,1376 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "default": {},
+    "title": "Root Schema",
+    "required": [
+        "name",
+        "title",
+        "location",
+        "cage",
+        "cohort",
+        "diet",
+        "augers",
+        "supplyPump",
+        "deliveryPump",
+        "mixingBowl",
+        "hopper",
+        "plc",
+        "calibrations"
+    ],
+    "properties": {
+        "name": {
+            "type": "string",
+            "default": "",
+            "title": "The name Schema",
+            "examples": [
+                "starboardfs"
+            ]
+        },
+        "title": {
+            "type": "string",
+            "default": "",
+            "title": "The title Schema",
+            "examples": [
+                "Starboard Feed String"
+            ]
+        },
+        "location": {
+            "type": "string",
+            "default": "",
+            "title": "The location Schema",
+            "examples": [
+                "starboard"
+            ]
+        },
+        "cage": {
+            "type": "string",
+            "default": "",
+            "title": "The cage Schema",
+            "examples": [
+                "50B-2021"
+            ]
+        },
+        "cohort": {
+            "type": "string",
+            "default": "",
+            "title": "The cohort Schema",
+            "examples": [
+                "SR-C06A22Ec_C06B"
+            ]
+        },
+        "diet": {
+            "type": "object",
+            "default": {},
+            "title": "The diet Schema",
+            "required": [
+                "diameter",
+                "brand",
+                "formula"
+            ],
+            "properties": {
+                "diameter": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The diameter Schema",
+                    "examples": [
+                        "12 mm"
+                    ]
+                },
+                "brand": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The brand Schema",
+                    "examples": [
+                        "Biomar"
+                    ]
+                },
+                "formula": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The formula Schema",
+                    "examples": [
+                        "EFICO Sigma 2000"
+                    ]
+                }
+            },
+            "examples": [{
+                "diameter": "12 mm",
+                "brand": "Biomar",
+                "formula": "EFICO Sigma 2000"
+            }]
+        },
+        "augers": {
+            "type": "array",
+            "default": [],
+            "title": "The augers Schema",
+            "items": {
+                "type": "object",
+                "title": "A Schema",
+                "required": [
+                    "metadata",
+                    "settings"
+                ],
+                "properties": {
+                    "metadata": {
+                        "type": "object",
+                        "title": "The metadata Schema",
+                        "required": [
+                            "make",
+                            "model",
+                            "type",
+                            "power",
+                            "hz",
+                            "phases",
+                            "voltage",
+                            "speed",
+                            "diameter"
+                        ],
+                        "properties": {
+                            "make": {
+                                "type": "string",
+                                "title": "The make Schema",
+                                "examples": [
+                                    "Marathon"
+                                ]
+                            },
+                            "model": {
+                                "type": "string",
+                                "title": "The model Schema",
+                                "examples": [
+                                    "5K49SN4231AY"
+                                ]
+                            },
+                            "type": {
+                                "type": "string",
+                                "title": "The type Schema",
+                                "examples": [
+                                    "Electric Motor"
+                                ]
+                            },
+                            "power": {
+                                "type": "string",
+                                "title": "The power Schema",
+                                "examples": [
+                                    "1.5HP / 1.1kW"
+                                ]
+                            },
+                            "hz": {
+                                "type": "string",
+                                "title": "The hz Schema",
+                                "examples": [
+                                    "60Hz"
+                                ]
+                            },
+                            "phases": {
+                                "type": "integer",
+                                "title": "The phases Schema",
+                                "examples": [
+                                    3
+                                ]
+                            },
+                            "voltage": {
+                                "type": "string",
+                                "title": "The voltage Schema",
+                                "examples": [
+                                    "208-230/460 VAC"
+                                ]
+                            },
+                            "speed": {
+                                "type": "string",
+                                "title": "The speed Schema",
+                                "examples": [
+                                    "1725 RPM"
+                                ]
+                            },
+                            "diameter": {
+                                "type": "string",
+                                "title": "The diameter Schema",
+                                "examples": [
+                                    "4 inch"
+                                ]
+                            }
+                        },
+                        "examples": [{
+                            "make": "Marathon",
+                            "model": "5K49SN4231AY",
+                            "type": "Electric Motor",
+                            "power": "1.5HP / 1.1kW",
+                            "hz": "60Hz",
+                            "phases": 3,
+                            "voltage": "208-230/460 VAC",
+                            "speed": "1725 RPM",
+                            "diameter": "4 inch"
+                        },
+                        {
+                            "make": "Marathon",
+                            "model": "5K49SN4231AY",
+                            "type": "Electric Motor",
+                            "power": "1.5HP / 1.1kW",
+                            "hz": "60Hz",
+                            "phases": 3,
+                            "voltage": "208-230/460 VAC",
+                            "speed": "1725 RPM",
+                            "diameter": "4 inch"
+                        }]
+                    },
+                    "settings": {
+                        "type": "object",
+                        "title": "The settings Schema",
+                        "required": [
+                            "feedRate"
+                        ],
+                        "properties": {
+                            "feedRate": {
+                                "type": "object",
+                                "title": "The feedRate Schema",
+                                "required": [
+                                    "min",
+                                    "max",
+                                    "default",
+                                    "pulseThreshold",
+                                    "numberOfPulsesPerMinute"
+                                ],
+                                "properties": {
+                                    "min": {
+                                        "type": "integer",
+                                        "title": "The min Schema",
+                                        "examples": [
+                                            0
+                                        ]
+                                    },
+                                    "max": {
+                                        "type": "integer",
+                                        "title": "The max Schema",
+                                        "examples": [
+                                            100
+                                        ]
+                                    },
+                                    "default": {
+                                        "type": "integer",
+                                        "title": "The default Schema",
+                                        "examples": [
+                                            50
+                                        ]
+                                    },
+                                    "pulseThreshold": {
+                                        "type": "integer",
+                                        "title": "The pulseThreshold Schema",
+                                        "examples": [
+                                            30
+                                        ]
+                                    },
+                                    "numberOfPulsesPerMinute": {
+                                        "type": "integer",
+                                        "title": "The numberOfPulsesPerMinute Schema",
+                                        "examples": [
+                                            3
+                                        ]
+                                    }
+                                },
+                                "examples": [{
+                                    "min": 0,
+                                    "max": 100,
+                                    "default": 50,
+                                    "pulseThreshold": 30,
+                                    "numberOfPulsesPerMinute": 3
+                                },
+                                {
+                                    "min": 0,
+                                    "max": 100,
+                                    "default": 50,
+                                    "pulseThreshold": 30,
+                                    "numberOfPulsesPerMinute": 3
+                                }]
+                            }
+                        },
+                        "examples": [{
+                            "feedRate": {
+                                "min": 0,
+                                "max": 100,
+                                "default": 50,
+                                "pulseThreshold": 30,
+                                "numberOfPulsesPerMinute": 3
+                            }
+                        },
+                        {
+                            "feedRate": {
+                                "min": 0,
+                                "max": 100,
+                                "default": 50,
+                                "pulseThreshold": 30,
+                                "numberOfPulsesPerMinute": 3
+                            }
+                        }]
+                    }
+                },
+                "examples": [{
+                    "metadata": {
+                        "make": "Marathon",
+                        "model": "5K49SN4231AY",
+                        "type": "Electric Motor",
+                        "power": "1.5HP / 1.1kW",
+                        "hz": "60Hz",
+                        "phases": 3,
+                        "voltage": "208-230/460 VAC",
+                        "speed": "1725 RPM",
+                        "diameter": "4 inch"
+                    },
+                    "settings": {
+                        "feedRate": {
+                            "min": 0,
+                            "max": 100,
+                            "default": 50,
+                            "pulseThreshold": 30,
+                            "numberOfPulsesPerMinute": 3
+                        }
+                    }
+                },
+                {
+                    "metadata": {
+                        "make": "Marathon",
+                        "model": "5K49SN4231AY",
+                        "type": "Electric Motor",
+                        "power": "1.5HP / 1.1kW",
+                        "hz": "60Hz",
+                        "phases": 3,
+                        "voltage": "208-230/460 VAC",
+                        "speed": "1725 RPM",
+                        "diameter": "4 inch"
+                    },
+                    "settings": {
+                        "feedRate": {
+                            "min": 0,
+                            "max": 100,
+                            "default": 50,
+                            "pulseThreshold": 30,
+                            "numberOfPulsesPerMinute": 3
+                        }
+                    }
+                }]
+            },
+            "examples": [
+                [{
+                    "metadata": {
+                        "make": "Marathon",
+                        "model": "5K49SN4231AY",
+                        "type": "Electric Motor",
+                        "power": "1.5HP / 1.1kW",
+                        "hz": "60Hz",
+                        "phases": 3,
+                        "voltage": "208-230/460 VAC",
+                        "speed": "1725 RPM",
+                        "diameter": "4 inch"
+                    },
+                    "settings": {
+                        "feedRate": {
+                            "min": 0,
+                            "max": 100,
+                            "default": 50,
+                            "pulseThreshold": 30,
+                            "numberOfPulsesPerMinute": 3
+                        }
+                    }
+                },
+                {
+                    "metadata": {
+                        "make": "Marathon",
+                        "model": "5K49SN4231AY",
+                        "type": "Electric Motor",
+                        "power": "1.5HP / 1.1kW",
+                        "hz": "60Hz",
+                        "phases": 3,
+                        "voltage": "208-230/460 VAC",
+                        "speed": "1725 RPM",
+                        "diameter": "4 inch"
+                    },
+                    "settings": {
+                        "feedRate": {
+                            "min": 0,
+                            "max": 100,
+                            "default": 50,
+                            "pulseThreshold": 30,
+                            "numberOfPulsesPerMinute": 3
+                        }
+                    }
+                }]
+            ]
+        },
+        "supplyPump": {
+            "type": "object",
+            "default": {},
+            "title": "The supplyPump Schema",
+            "required": [
+                "metadata",
+                "settings"
+            ],
+            "properties": {
+                "metadata": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The metadata Schema",
+                    "required": [
+                        "make",
+                        "model",
+                        "type",
+                        "power",
+                        "hz",
+                        "phases",
+                        "voltage",
+                        "speed"
+                    ],
+                    "properties": {
+                        "make": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The make Schema",
+                            "examples": [
+                                "Pacer"
+                            ]
+                        },
+                        "model": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The model Schema",
+                            "examples": [
+                                "SE-2FV-CT"
+                            ]
+                        },
+                        "type": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The type Schema",
+                            "examples": [
+                                "Self-Priming"
+                            ]
+                        },
+                        "power": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The power Schema",
+                            "examples": [
+                                "5HP / 3.75kW"
+                            ]
+                        },
+                        "hz": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The hz Schema",
+                            "examples": [
+                                "60Hz"
+                            ]
+                        },
+                        "phases": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The phases Schema",
+                            "examples": [
+                                3
+                            ]
+                        },
+                        "voltage": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The voltage Schema",
+                            "examples": [
+                                "208-230/460VAC"
+                            ]
+                        },
+                        "speed": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The speed Schema",
+                            "examples": [
+                                "3450 RPM"
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "make": "Pacer",
+                        "model": "SE-2FV-CT",
+                        "type": "Self-Priming",
+                        "power": "5HP / 3.75kW",
+                        "hz": "60Hz",
+                        "phases": 3,
+                        "voltage": "208-230/460VAC",
+                        "speed": "3450 RPM"
+                    }]
+                },
+                "settings": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The settings Schema",
+                    "required": [
+                        "setupSpeed",
+                        "runSpeed",
+                        "primeTimeout",
+                        "psiThresholds"
+                    ],
+                    "properties": {
+                        "setupSpeed": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The setupSpeed Schema",
+                            "examples": [
+                                100
+                            ]
+                        },
+                        "runSpeed": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The runSpeed Schema",
+                            "examples": [
+                                59
+                            ]
+                        },
+                        "primeTimeout": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The primeTimeout Schema",
+                            "examples": [
+                                120
+                            ]
+                        },
+                        "psiThresholds": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The psiThresholds Schema",
+                            "required": [
+                                "min",
+                                "max",
+                                "primed"
+                            ],
+                            "properties": {
+                                "min": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "The min Schema",
+                                    "examples": [
+                                        -14
+                                    ]
+                                },
+                                "max": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "The max Schema",
+                                    "examples": [
+                                        0
+                                    ]
+                                },
+                                "primed": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "The primed Schema",
+                                    "examples": [
+                                        -5
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "min": -14,
+                                "max": 0,
+                                "primed": -5
+                            }]
+                        }
+                    },
+                    "examples": [{
+                        "setupSpeed": 100,
+                        "runSpeed": 59,
+                        "primeTimeout": 120,
+                        "psiThresholds": {
+                            "min": -14,
+                            "max": 0,
+                            "primed": -5
+                        }
+                    }]
+                }
+            },
+            "examples": [{
+                "metadata": {
+                    "make": "Pacer",
+                    "model": "SE-2FV-CT",
+                    "type": "Self-Priming",
+                    "power": "5HP / 3.75kW",
+                    "hz": "60Hz",
+                    "phases": 3,
+                    "voltage": "208-230/460VAC",
+                    "speed": "3450 RPM"
+                },
+                "settings": {
+                    "setupSpeed": 100,
+                    "runSpeed": 59,
+                    "primeTimeout": 120,
+                    "psiThresholds": {
+                        "min": -14,
+                        "max": 0,
+                        "primed": -5
+                    }
+                }
+            }]
+        },
+        "deliveryPump": {
+            "type": "object",
+            "default": {},
+            "title": "The deliveryPump Schema",
+            "required": [
+                "metadata",
+                "settings"
+            ],
+            "properties": {
+                "metadata": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The metadata Schema",
+                    "required": [
+                        "make",
+                        "model",
+                        "type",
+                        "power",
+                        "hz",
+                        "phases",
+                        "voltage",
+                        "speed"
+                    ],
+                    "properties": {
+                        "make": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The make Schema",
+                            "examples": [
+                                "Vaughan"
+                            ]
+                        },
+                        "model": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The model Schema",
+                            "examples": [
+                                "HSC4DHCS"
+                            ]
+                        },
+                        "type": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The type Schema",
+                            "examples": [
+                                "Centrifugal Transfer Pump"
+                            ]
+                        },
+                        "power": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The power Schema",
+                            "examples": [
+                                "10HP / 7.5kW"
+                            ]
+                        },
+                        "hz": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The hz Schema",
+                            "examples": [
+                                "60Hz"
+                            ]
+                        },
+                        "phases": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The phases Schema",
+                            "examples": [
+                                3
+                            ]
+                        },
+                        "voltage": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The voltage Schema",
+                            "examples": [
+                                "208-230/460VAC"
+                            ]
+                        },
+                        "speed": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The speed Schema",
+                            "examples": [
+                                "1765 RPM"
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "make": "Vaughan",
+                        "model": "HSC4DHCS",
+                        "type": "Centrifugal Transfer Pump",
+                        "power": "10HP / 7.5kW",
+                        "hz": "60Hz",
+                        "phases": 3,
+                        "voltage": "208-230/460VAC",
+                        "speed": "1765 RPM"
+                    }]
+                },
+                "settings": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The settings Schema",
+                    "required": [
+                        "runSpeed",
+                        "shutoffPressureTimeout",
+                        "psiThresholds"
+                    ],
+                    "properties": {
+                        "runSpeed": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The runSpeed Schema",
+                            "examples": [
+                                100
+                            ]
+                        },
+                        "shutoffPressureTimeout": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The shutoffPressureTimeout Schema",
+                            "examples": [
+                                30
+                            ]
+                        },
+                        "psiThresholds": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The psiThresholds Schema",
+                            "required": [
+                                "min",
+                                "max"
+                            ],
+                            "properties": {
+                                "min": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "The min Schema",
+                                    "examples": [
+                                        12
+                                    ]
+                                },
+                                "max": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "The max Schema",
+                                    "examples": [
+                                        34
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "min": 12,
+                                "max": 34
+                            }]
+                        }
+                    },
+                    "examples": [{
+                        "runSpeed": 100,
+                        "shutoffPressureTimeout": 30,
+                        "psiThresholds": {
+                            "min": 12,
+                            "max": 34
+                        }
+                    }]
+                }
+            },
+            "examples": [{
+                "metadata": {
+                    "make": "Vaughan",
+                    "model": "HSC4DHCS",
+                    "type": "Centrifugal Transfer Pump",
+                    "power": "10HP / 7.5kW",
+                    "hz": "60Hz",
+                    "phases": 3,
+                    "voltage": "208-230/460VAC",
+                    "speed": "1765 RPM"
+                },
+                "settings": {
+                    "runSpeed": 100,
+                    "shutoffPressureTimeout": 30,
+                    "psiThresholds": {
+                        "min": 12,
+                        "max": 34
+                    }
+                }
+            }]
+        },
+        "mixingBowl": {
+            "type": "object",
+            "default": {},
+            "title": "The mixingBowl Schema",
+            "required": [
+                "metadata",
+                "settings"
+            ],
+            "properties": {
+                "metadata": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The metadata Schema",
+                    "required": [
+                        "diameter",
+                        "volume"
+                    ],
+                    "properties": {
+                        "diameter": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The diameter Schema",
+                            "examples": [
+                                60
+                            ]
+                        },
+                        "volume": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The volume Schema",
+                            "examples": [
+                                100
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "diameter": 60,
+                        "volume": 100
+                    }]
+                },
+                "settings": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The settings Schema",
+                    "required": [
+                        "fillTimeout",
+                        "stabilizationTimeout",
+                        "flushTimeout",
+                        "minimumLevelMainPhase"
+                    ],
+                    "properties": {
+                        "fillTimeout": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The fillTimeout Schema",
+                            "examples": [
+                                6
+                            ]
+                        },
+                        "stabilizationTimeout": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The stabilizationTimeout Schema",
+                            "examples": [
+                                60
+                            ]
+                        },
+                        "flushTimeout": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The flushTimeout Schema",
+                            "examples": [
+                                10
+                            ]
+                        },
+                        "minimumLevelMainPhase": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The minimumLevelMainPhase Schema",
+                            "examples": [
+                                8
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "fillTimeout": 6,
+                        "stabilizationTimeout": 60,
+                        "flushTimeout": 10,
+                        "minimumLevelMainPhase": 8
+                    }]
+                }
+            },
+            "examples": [{
+                "metadata": {
+                    "diameter": 60,
+                    "volume": 100
+                },
+                "settings": {
+                    "fillTimeout": 6,
+                    "stabilizationTimeout": 60,
+                    "flushTimeout": 10,
+                    "minimumLevelMainPhase": 8
+                }
+            }]
+        },
+        "hopper": {
+            "type": "object",
+            "default": {},
+            "title": "The hopper Schema",
+            "required": [
+                "metadata",
+                "settings"
+            ],
+            "properties": {
+                "metadata": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The metadata Schema",
+                    "required": [
+                        "diameter",
+                        "volume"
+                    ],
+                    "properties": {
+                        "diameter": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The diameter Schema",
+                            "examples": [
+                                60
+                            ]
+                        },
+                        "volume": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The volume Schema",
+                            "examples": [
+                                100
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "diameter": 60,
+                        "volume": 100
+                    }]
+                },
+                "settings": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The settings Schema",
+                    "required": [
+                        "timeLimit",
+                        "feedAmount"
+                    ],
+                    "properties": {
+                        "timeLimit": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The timeLimit Schema",
+                            "examples": [
+                                120
+                            ]
+                        },
+                        "feedAmount": {
+                            "type": "object",
+                            "default": {},
+                            "title": "The feedAmount Schema",
+                            "required": [
+                                "min",
+                                "max",
+                                "default"
+                            ],
+                            "properties": {
+                                "min": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "The min Schema",
+                                    "examples": [
+                                        0
+                                    ]
+                                },
+                                "max": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "The max Schema",
+                                    "examples": [
+                                        5000
+                                    ]
+                                },
+                                "default": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "The default Schema",
+                                    "examples": [
+                                        2500
+                                    ]
+                                }
+                            },
+                            "examples": [{
+                                "min": 0,
+                                "max": 5000,
+                                "default": 2500
+                            }]
+                        }
+                    },
+                    "examples": [{
+                        "timeLimit": 120,
+                        "feedAmount": {
+                            "min": 0,
+                            "max": 5000,
+                            "default": 2500
+                        }
+                    }]
+                }
+            },
+            "examples": [{
+                "metadata": {
+                    "diameter": 60,
+                    "volume": 100
+                },
+                "settings": {
+                    "timeLimit": 120,
+                    "feedAmount": {
+                        "min": 0,
+                        "max": 5000,
+                        "default": 2500
+                    }
+                }
+            }]
+        },
+        "plc": {
+            "type": "object",
+            "default": {},
+            "title": "The plc Schema",
+            "required": [
+                "metadata",
+                "settings"
+            ],
+            "properties": {
+                "metadata": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The metadata Schema",
+                    "required": [
+                        "make",
+                        "model"
+                    ],
+                    "properties": {
+                        "make": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The make Schema",
+                            "examples": [
+                                "automation-direct"
+                            ]
+                        },
+                        "model": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The model Schema",
+                            "examples": [
+                                "C2-03CPU"
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "make": "automation-direct",
+                        "model": "C2-03CPU"
+                    }]
+                },
+                "settings": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The settings Schema",
+                    "required": [
+                        "href",
+                        "timeout"
+                    ],
+                    "properties": {
+                        "href": {
+                            "type": "string",
+                            "default": "",
+                            "title": "The href Schema",
+                            "examples": [
+                                "http://stbdfs.plc.svc.cluster.local:5000/api/plc"
+                            ]
+                        },
+                        "timeout": {
+                            "type": "number",
+                            "default": 0.0,
+                            "title": "The timeout Schema",
+                            "examples": [
+                                0.5
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "href": "http://stbdfs.plc.svc.cluster.local:5000/api/plc",
+                        "timeout": 0.5
+                    }]
+                }
+            },
+            "examples": [{
+                "metadata": {
+                    "make": "automation-direct",
+                    "model": "C2-03CPU"
+                },
+                "settings": {
+                    "href": "http://stbdfs.plc.svc.cluster.local:5000/api/plc",
+                    "timeout": 0.5
+                }
+            }]
+        },
+        "calibrations": {
+            "type": "object",
+            "default": {},
+            "title": "The calibrations Schema",
+            "required": [
+                "ratio_of_ticks_per_kg",
+                "auger_run_speed_coefficients",
+                "feed_rate_actual_coefficients"
+            ],
+            "properties": {
+                "ratio_of_ticks_per_kg": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "The ratio_of_ticks_per_kg Schema",
+                    "examples": [
+                        521
+                    ]
+                },
+                "auger_run_speed_coefficients": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The auger_run_speed_coefficients Schema",
+                    "required": [
+                        "a",
+                        "b",
+                        "c"
+                    ],
+                    "properties": {
+                        "a": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The a Schema",
+                            "examples": [
+                                0
+                            ]
+                        },
+                        "b": {
+                            "type": "number",
+                            "default": 0.0,
+                            "title": "The b Schema",
+                            "examples": [
+                                0.25
+                            ]
+                        },
+                        "c": {
+                            "type": "number",
+                            "default": 0.0,
+                            "title": "The c Schema",
+                            "examples": [
+                                12.5
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "a": 0,
+                        "b": 0.25,
+                        "c": 12.5
+                    }]
+                },
+                "feed_rate_actual_coefficients": {
+                    "type": "object",
+                    "default": {},
+                    "title": "The feed_rate_actual_coefficients Schema",
+                    "required": [
+                        "d",
+                        "e",
+                        "f"
+                    ],
+                    "properties": {
+                        "d": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "The d Schema",
+                            "examples": [
+                                0
+                            ]
+                        },
+                        "e": {
+                            "type": "number",
+                            "default": 0.0,
+                            "title": "The e Schema",
+                            "examples": [
+                                0.25
+                            ]
+                        },
+                        "f": {
+                            "type": "number",
+                            "default": 0.0,
+                            "title": "The f Schema",
+                            "examples": [
+                                12.5
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "d": 0,
+                        "e": 0.25,
+                        "f": 12.5
+                    }]
+                }
+            },
+            "examples": [{
+                "ratio_of_ticks_per_kg": 521,
+                "auger_run_speed_coefficients": {
+                    "a": 0,
+                    "b": 0.25,
+                    "c": 12.5
+                },
+                "feed_rate_actual_coefficients": {
+                    "d": 0,
+                    "e": 0.25,
+                    "f": 12.5
+                }
+            }]
+        }
+    },
+    "examples": [{
+        "name": "starboardfs",
+        "title": "Starboard Feed String",
+        "location": "starboard",
+        "cage": "50B-2021",
+        "cohort": "SR-C06A22Ec_C06B",
+        "diet": {
+            "diameter": "12 mm",
+            "brand": "Biomar",
+            "formula": "EFICO Sigma 2000"
+        },
+        "augers": [{
+            "metadata": {
+                "make": "Marathon",
+                "model": "5K49SN4231AY",
+                "type": "Electric Motor",
+                "power": "1.5HP / 1.1kW",
+                "hz": "60Hz",
+                "phases": 3,
+                "voltage": "208-230/460 VAC",
+                "speed": "1725 RPM",
+                "diameter": "4 inch"
+            },
+            "settings": {
+                "feedRate": {
+                    "min": 0,
+                    "max": 100,
+                    "default": 50,
+                    "pulseThreshold": 30,
+                    "numberOfPulsesPerMinute": 3
+                }
+            }
+        },
+        {
+            "metadata": {
+                "make": "Marathon",
+                "model": "5K49SN4231AY",
+                "type": "Electric Motor",
+                "power": "1.5HP / 1.1kW",
+                "hz": "60Hz",
+                "phases": 3,
+                "voltage": "208-230/460 VAC",
+                "speed": "1725 RPM",
+                "diameter": "4 inch"
+            },
+            "settings": {
+                "feedRate": {
+                    "min": 0,
+                    "max": 100,
+                    "default": 50,
+                    "pulseThreshold": 30,
+                    "numberOfPulsesPerMinute": 3
+                }
+            }
+        }],
+        "supplyPump": {
+            "metadata": {
+                "make": "Pacer",
+                "model": "SE-2FV-CT",
+                "type": "Self-Priming",
+                "power": "5HP / 3.75kW",
+                "hz": "60Hz",
+                "phases": 3,
+                "voltage": "208-230/460VAC",
+                "speed": "3450 RPM"
+            },
+            "settings": {
+                "setupSpeed": 100,
+                "runSpeed": 59,
+                "primeTimeout": 120,
+                "psiThresholds": {
+                    "min": -14,
+                    "max": 0,
+                    "primed": -5
+                }
+            }
+        },
+        "deliveryPump": {
+            "metadata": {
+                "make": "Vaughan",
+                "model": "HSC4DHCS",
+                "type": "Centrifugal Transfer Pump",
+                "power": "10HP / 7.5kW",
+                "hz": "60Hz",
+                "phases": 3,
+                "voltage": "208-230/460VAC",
+                "speed": "1765 RPM"
+            },
+            "settings": {
+                "runSpeed": 100,
+                "shutoffPressureTimeout": 30,
+                "psiThresholds": {
+                    "min": 12,
+                    "max": 34
+                }
+            }
+        },
+        "mixingBowl": {
+            "metadata": {
+                "diameter": 60,
+                "volume": 100
+            },
+            "settings": {
+                "fillTimeout": 6,
+                "stabilizationTimeout": 60,
+                "flushTimeout": 10,
+                "minimumLevelMainPhase": 8
+            }
+        },
+        "hopper": {
+            "metadata": {
+                "diameter": 60,
+                "volume": 100
+            },
+            "settings": {
+                "timeLimit": 120,
+                "feedAmount": {
+                    "min": 0,
+                    "max": 5000,
+                    "default": 2500
+                }
+            }
+        },
+        "plc": {
+            "metadata": {
+                "make": "automation-direct",
+                "model": "C2-03CPU"
+            },
+            "settings": {
+                "href": "http://stbdfs.plc.svc.cluster.local:5000/api/plc",
+                "timeout": 0.5
+            }
+        },
+        "calibrations": {
+            "ratio_of_ticks_per_kg": 521,
+            "auger_run_speed_coefficients": {
+                "a": 0,
+                "b": 0.25,
+                "c": 12.5
+            },
+            "feed_rate_actual_coefficients": {
+                "d": 0,
+                "e": 0.25,
+                "f": 12.5
+            }
+        }
+    }]
+}

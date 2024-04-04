@@ -1,0 +1,45 @@
+{
+    "$id": "file://localhost/schemas/automationSetting.json",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Automation Setting",
+    "description": "A setting for an automation",
+    "examples": [
+        {
+            "panel": "mccp",
+            "property": "userChargingBattery",
+            "value": 1
+        }
+    ],
+    "required": [
+        "panel",
+        "property",
+        "value"
+    ],
+    "type": "object",
+    "properties": {
+        "panel": {
+            "$id": "#/properties/panel",
+            "type": "string",
+            "title": "The panel schema",
+            "description": "The panel that occured",
+            "enum": [
+                "mccp"
+            ]
+        },
+        "property": {
+            "$id": "#/properties/property",
+            "type": "string",
+            "title": "The property schema",
+            "description": "A property describing the event",
+            "examples": []
+        },
+        "value": {
+            "$id": "#/properties/value",
+            "type": "integer",
+            "title": "The value schema",
+            "description": "Additional value about the event",
+            "examples": []
+        }
+    },
+    "additionalProperties": false
+}

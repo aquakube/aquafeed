@@ -1,0 +1,427 @@
+apiVersion: foreveroceans.io/v1
+kind: PLC
+metadata:
+  name: controls
+  labels:
+    plc.foreveroceans.io/brand: automation-direct
+    plc.foreveroceans.io/productID: C2-03CPU
+spec:
+  title: CONTROLS PLC
+  version: latest
+  plc_timeout: 0.5
+  base: modbus+tcp://10.0.9.20:502/1/
+  properties:
+  #EPO (EMERGENCY POWER OFF)
+    userenableepo:
+      title: EPO On/Off
+      type: boolean
+      readOnly: false
+      forms:
+      - href: '16492'
+        op:
+        - readproperty
+        - writeproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5 
+  #GENERATOR SWITCH
+    userenablegenerator:
+      title: Generator On/Off
+      type: boolean
+      readOnly: false
+      forms:
+      - href: '16390'
+        op:
+        - readproperty
+        - writeproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+    genswitchauto:
+      title: Generator Switch in Auto Position 
+      type: boolean
+      readOnly: true
+      forms:
+      - href: '16488'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+    genswitchmanrun:
+      title: Generator Switch in Manual/Run Position
+      type: boolean
+      readOnly: true
+      forms:
+      - href: '16489'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+    genswitchoff:
+      title: Generator Switch in Off Position
+      type: boolean
+      readOnly: true
+      forms:
+      - href: '16489'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+    
+  # GENERATOR LOADBUS
+    genloadbusonline:
+      title: Generator Loadbus Online
+      type: boolean
+      readOnly: true
+      forms:
+      - href: '16485'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+    genloadbusfail:
+      title: Generator Loadbus Failure
+      type: boolean
+      readOnly: true
+      forms:
+      - href: '16480'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+    portgenrunning:
+      title: Generator 1 Running
+      type: boolean
+      readOnly: true
+      forms:
+      - href: '16495'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+    starboardgenrunning:
+      title: Generator 2 Running
+      type: boolean
+      readOnly: true
+      forms:
+      - href: '16505'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+    genloadbusvac:
+      title: Generator Loadbus VAC
+      type: number
+      unit: VAC
+      minimum: 0
+      maximum: 500
+      readOnly: true
+      forms:
+      - href: '400811'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    genloadbuskwpercent:
+      title: Generator Loadbus Kilowatt Percent 
+      type: number
+      unit: kW
+      minimum: 0
+      maximum: 22
+      readOnly: true
+      forms:
+      - href: '400813'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+  #PORT GENERATOR READINGS
+    portengineoilpress:
+      title: Port Engine Oil Pressure 
+      type: number
+      unit: kPa
+      minimum: 0
+      maximum: 100
+      readOnly: true
+      forms:
+      - href: '400059'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    portenginecoolanttemp:
+      title: Port Engine Coolant Temperature
+      type: number
+      unit: C
+      minimum: 0
+      maximum: 150
+      readOnly: true
+      forms:
+      - href: '400060'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    portenginespeed:
+      title: Port Engine Speed 
+      type: number
+      unit: RPM
+      minimum: 0
+      maximum: 2000
+      readOnly: true
+      forms:
+      - href: '400061'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    portstarterbattvolt:
+      title: Port Engine Starter battery Voltage
+      type: number
+      unit: VDC
+      minimum: 0
+      maximum: 28
+      readOnly: true
+      forms:
+      - href: '400110'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+  #STARBOARD GENERATOR READINGS
+    starboardengineoilpress:
+      title: Starboard Engine Oil Pressure 
+      type: number
+      unit: kPa
+      minimum: 0
+      maximum: 100
+      readOnly: true
+      forms:
+      - href: '402059'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    starboardenginecoolanttemp:
+      title: Starboard Engine Coolant Temperature
+      type: number
+      unit: C
+      minimum: 0
+      maximum: 150
+      readOnly: true
+      forms:
+      - href: '402060'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    starboardenginespeed:
+      title: Starboard Engine Speed 
+      type: number
+      unit: RPM
+      minimum: 0
+      maximum: 2000
+      readOnly: true
+      forms:
+      - href: '400061'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    starboardstarterbattvolt:
+      title: Starboard Engine Starter battery Voltage
+      type: number
+      unit: VDC
+      minimum: 0
+      maximum: 28
+      readOnly: true
+      forms:
+      - href: '402110'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+  #BATTERY SYSTEM 
+    userstartcharge:
+      title: User Start Charge
+      type: boolean
+      readOnly: false
+      forms:
+      - href: '16590'
+        op:
+        - writeproperty
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+    userendcharge:
+      title: User End Charge
+      type: boolean
+      readOnly: false
+      forms:
+      - href: '16589'
+        op:
+        - writeproperty
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+    chargeinprogress:
+      title: Charge In Progress
+      type: boolean
+      readOnly: true
+      forms:
+      - href: '16587'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5
+    battbankvoltage:
+      title: Battery Bank Voltage
+      type: number
+      unit: VDC
+      minimum: 0
+      maximum: 52
+      readOnly: true
+      forms:
+      - href: '400206'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    battchargecurrent:
+      title: Battery Charge Current
+      type: number
+      unit: A
+      minimum: 0
+      maximum: 100
+      readOnly: true
+      forms:
+      - href: '400207'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    chargetimeelapsed:
+      title: Battery Charge Time Elasped 
+      type: number
+      unit: m
+      minimum: 0
+      maximum: 100
+      readOnly: true
+      forms:
+      - href: '400211'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    battloadwatts:
+      title: Battery Load Watts
+      type: number
+      unit: W
+      minimum: 0
+      maximum: 1000
+      readOnly: true
+      forms:
+      - href: '400215'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+    battloadcurrent:
+      title: Battery Load Current
+      type: number
+      unit: A
+      minimum: 0
+      maximum: 50
+      readOnly: true
+      forms:
+      - href: '400214'
+        op:
+        - readproperty
+        - observeproperty
+        modbus:entity: HoldingRegister
+        modbus:pollingTime: 5
+  #Add Lighting Controls
+    f2lightson:
+      title: F2 Lights On
+      type: boolean
+      readOnly: false
+      forms:
+      - href: '17344'
+        op:
+        - writeproperty
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5  
+    c2lightson:
+      title: C2 Lights On
+      type: boolean
+      readOnly: false
+      forms:
+      - href: '17345'
+        op:
+        - writeproperty
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5  
+    prlightson:
+      title: Pump Room Lights On
+      type: boolean
+      readOnly: false
+      forms:
+      - href: '17346'
+        op:
+        - writeproperty
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5    
+    acclightson:
+      title: Accommodation Lights On
+      type: boolean
+      readOnly: false
+      forms:
+      - href: '17347'
+        op:
+        - writeproperty
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5  
+    slglightson:
+      title: Silage Lights On
+      type: boolean
+      readOnly: false
+      forms:
+      - href: '17348'
+        op:
+        - writeproperty
+        - readproperty
+        - observeproperty
+        modbus:entity: Coil
+        modbus:pollingTime: 5  

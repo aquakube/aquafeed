@@ -1,0 +1,133 @@
+{
+    "$id": "file://localhost/schemas/automationEvent.json",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Automation Event",
+    "description": "An event on an automation",
+    "examples": [
+        {
+            "event": "acknowledged",
+            "automation_id": "d2e9599b-710c-4e0a-a8ed-6b87a8bac904",
+            "level": "info",
+            "message": "Automation request recieved and is being executed",
+            "details": {
+                "automation_type": "simple",
+                "calibration": "biomar6.5",
+                "settings": {}
+            }
+        }
+    ],
+    "required": [
+        "event",
+        "level",
+        "automation_id",
+        "message"
+    ],
+    "type": "object",
+    "properties": {
+        "event": {
+            "$id": "#/properties/event",
+            "type": "string",
+            "title": "The event schema",
+            "description": "The event that occured",
+            "enum": [
+                "acknowledged",
+                "requested_pause",
+                "requested_resume",
+                "requested_stop",
+                "requested_update",
+                "requested_fault_reset",
+                "requested_reset",
+                "automation_paused",
+                "automation_faulted",
+                "automation_fault_reset",
+                "plc_request_failed",
+                "automation_failed",
+                "automation_updated",
+                "automation_update_failed",
+                "automation_stopped",
+                "automation_phase_changed",
+                "automation_completed",
+                "preflight_succeeded",
+                "preflight_failed",
+                "setup_succeeded",
+                "setup_failed",
+                "main_succeeded",
+                "main_timeout",
+                "main_failed",
+                "teardown_succeeded",
+                "teardown_failed",
+                "start_supply_pump_succeeded",
+                "start_supply_pump_failed",
+                "stop_supply_pump_succeeded",
+                "stop_supply_pump_failed",
+                "start_delivery_pump_succeeded",
+                "start_delivery_pump_failed",
+                "stop_delivery_pump_succeeded",
+                "stop_delivery_pump_failed",
+                "supply_pump_primed_succeeded",
+                "supply_pump_primed_failed",
+                "supply_pump_throttling",
+                "operational_supply_pump_speed_succeeded",
+                "operational_supply_pump_speed_failed",
+                "delivery_pump_pressure_warning",
+                "supply_pump_pressure_warning",
+                "feed_detected_warning",
+                "start_auger_succeeded",
+                "start_auger_failed",
+                "stop_auger_succeeded",
+                "stop_auger_failed",
+                "feed_target_reached",
+                "mixing_bowl_empty_succeeded",
+                "mixing_bowl_empty_failed"
+            ]
+        },
+        "level": {
+            "$id": "#/properties/level",
+            "type": "string",
+            "title": "The level schema",
+            "description": "The severity of the event",
+            "enum": [
+                "info",
+                "warning",
+                "debug",
+                "error"
+            ]
+        },
+        "automation_id": {
+            "$id": "#/properties/automation_id",
+            "type": "string",
+            "title": "The automation_id schema",
+            "description": "The id of the automation that the event is for",
+            "examples": [
+                "d2e9599b-710c-4e0a-a8ed-6b87a8bac904"
+            ]
+        },
+        "message": {
+            "$id": "#/properties/message",
+            "type": "string",
+            "title": "The message schema",
+            "description": "A message describing the event",
+            "examples": [
+                "Automation request recieved and is being executed",
+                "Automation started",
+                "Automation completed",
+                "Automation failed"
+            ]
+        },
+        "details": {
+            "$id": "#/properties/details",
+            "type": "object",
+            "title": "The details schema",
+            "description": "Additional details about the event",
+            "default": {},
+            "examples": [
+                {
+                    "automation_type": "simple",
+                    "calibration": "biomar6.5",
+                    "settings": {}
+                }
+            ]
+        }
+    },
+    "additionalProperties": false
+}

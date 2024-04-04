@@ -1,0 +1,40 @@
+apiVersion: skaffold/v4beta1
+kind: Config
+metadata:
+  name: kube-feed
+build:
+  tagPolicy:
+    sha256: {}
+  artifacts:
+  - image: 456087932636.dkr.ecr.us-west-2.amazonaws.com/kube-feed
+    context: .
+    docker:
+      dockerfile: Dockerfile
+    hooks:
+      before:
+        - command: ["sh", "-c", "aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 456087932636.dkr.ecr.us-west-2.amazonaws.com"]
+          os: [darwin, linux]
+manifests:
+  kustomize:
+    paths:
+      - kubernetes/base
+      - kubernetes/base/plc
+deploy:
+  kubectl: {}
+profiles:
+  - name: dev
+    patches:
+      - op: replace
+        path: /build/tagPolicy
+        value:
+          sha256: {}
+    deploy:
+      kubeContext: avalonkoadev
+  - name: prod
+    patches:
+      - op: replace
+        path: /build/tagPolicy
+        value:
+          gitCommit: {}
+    deploy:
+      kubeContext: avalonkoadev
