@@ -1,5 +1,7 @@
-# kube-feed
+# aquafeed
 
+app - AquaFeed UI which is the frontend for operators to run the feed system. 
+server- The software automation for running the feed system.  Communicates with the PLCs in order to control pumps, gnerators, and augers.
 
 ## Development
 
